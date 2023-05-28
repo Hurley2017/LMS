@@ -1,6 +1,7 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from pymongo import MongoClient
 from dotenv import load_dotenv
+import helpers
 import os
 
 load_dotenv()
@@ -57,4 +58,34 @@ def edit():
 
 @engine.route('/send_loginfo', methods=['POST'])
 def log_info():
-    return "Help"
+    response = {"status" : False, "message" : None}
+    incoming_data = request.json
+    email = incoming_data["email"]
+    password = helpers.MD5_HexDigest(incoming_data["password"])
+    flagged_user = USER.find_one({"email":email, "password":password})
+    if flagged_user == None:
+        flagged_staff = STAFF.find_one({"email":email, "password":password})
+        if flagged_staff == None:
+            response["message"] = "Wrong Email or Password"
+        else:
+            del flagged_staff["password"]
+            flagged_staff["_id"] = "ADMIN"
+            response["status"] = True
+            response["message"] = flagged_staff
+    else:
+        del flagged_user["password"]
+        flagged_user["_id"] = "USER"
+        response["status"] = True
+        response["message"] = flagged_user
+    return response
+
+@engine.route('/send_reginfo', methods=['POST'])
+def reg_info():
+    response = {"status" : False, "message" : None}
+    incoming_data = request.json
+    incoming_data["password"] = helpers.MD5_HexDigest(incoming_data["password"])
+    USER.insert_one(incoming_data)
+    response["status"] = True
+    response["message"] = "Successfully Registered!"
+    return response
+
