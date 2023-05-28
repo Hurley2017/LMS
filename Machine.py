@@ -62,7 +62,6 @@ def log_info():
     response = {"status" : False, "message" : {}}
     incoming_data = request.json
     email = incoming_data["email"]
-    print(incoming_data)
     password = helpers.MD5_HexDigest(incoming_data["password"])
     flagged_user = USER.find_one({"email":email, "password":password})
     if flagged_user == None:
@@ -70,17 +69,23 @@ def log_info():
         if flagged_staff == None:
             response["message"] = "Wrong Email or Password"
         else:
-            session = helpers.sessionGenerator(10)
-            session_package = {"avatar" : flagged_staff["email"], "key" : session, "role" : "ADMIN"}
-            KEYS.insert_one(session_package)
+            if(KEYS.find_one({"avatar" : flagged_staff["email"]}) != None):
+                response["message"] = {"avatar" : flagged_staff["email"], "key" : KEYS.find_one({"avatar" : flagged_staff["email"]})["key"], "role" : "ADMIN"}
+            else:
+                session = helpers.sessionGenerator(10)
+                response["message"] = {"avatar" : flagged_staff["email"], "key" : session, "role" : "ADMIN"}
+                session_package = {"avatar" : flagged_staff["email"], "key" : session, "role" : "ADMIN"}
+                KEYS.insert_one(session_package)
             response["status"] = True
-            response["message"] = {"avatar" : flagged_staff["email"], "key" : session, "role" : "ADMIN"}
     else:
-        session = helpers.sessionGenerator(10)
-        session_package = {"avatar" : flagged_user["email"], "key" : session, "role" : "USER"}
-        KEYS.insert_one(session_package)
+        if(KEYS.find_one({"avatar" : flagged_user["email"]}) != None):
+            response["message"] = {"avatar" : flagged_user["email"], "key" : KEYS.find_one({"avatar" : flagged_user["email"]})["key"], "role" : "USER"}
+        else:
+            session = helpers.sessionGenerator(10)
+            response["message"] = {"avatar" : flagged_user["email"], "key" : session, "role" : "USER"}
+            session_package = {"avatar" : flagged_user["email"], "key" : session, "role" : "USER"}
+            KEYS.insert_one(session_package)
         response["status"] = True
-        response["message"] = {"avatar" : flagged_user["email"], "key" : session, "role" : "USER"}
     return response
 
 
