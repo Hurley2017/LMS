@@ -11,9 +11,9 @@ def say_ello():
 def login():
     return render_template('log-in.html')
 
-@engine.route('/logout', methods=['GET'])
+@engine.route('/register', methods=['GET'])
 def logout():
-    return render_template('log-out.html')
+    return render_template('register.html')
 
 @engine.route('/dashboard', methods=['GET'])
 def dashboard():
