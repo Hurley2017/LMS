@@ -79,6 +79,7 @@ def log_info():
         response["message"] = flagged_user
     return response
 
+
 @engine.route('/send_reginfo', methods=['POST'])
 def reg_info():
     response = {"status" : False, "message" : None}
