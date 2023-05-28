@@ -36,7 +36,8 @@ function sendData(formData) {
       else
       {
 
-        document.getElementById("message").innerHTML = "Successfull login..." + " Redirecting to dashboard...";
+        document.getElementById("message").innerHTML = "Successfull login... Redirecting to dashboard...";
+        setCookie(data.message);
         setTimeout(redirect, 3000);
       }
     })

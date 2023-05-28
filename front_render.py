@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, jsonify, render_template, request
 from pymongo import MongoClient
 from dotenv import load_dotenv
 import helpers
@@ -72,15 +72,15 @@ def log_info():
         else:
             session = helpers.sessionGenerator(10)
             session_package = {"avatar" : flagged_staff["email"], "key" : session, "role" : "ADMIN"}
-            response["status"] = True
-            response["message"] = session_package
             KEYS.insert_one(session_package)
+            response["status"] = True
+            response["message"] = {"avatar" : flagged_staff["email"], "key" : session, "role" : "ADMIN"}
     else:
         session = helpers.sessionGenerator(10)
         session_package = {"avatar" : flagged_user["email"], "key" : session, "role" : "USER"}
-        response["status"] = True
-        response["message"] = session_package
         KEYS.insert_one(session_package)
+        response["status"] = True
+        response["message"] = {"avatar" : flagged_user["email"], "key" : session, "role" : "USER"}
     return response
 
 
