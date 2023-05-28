@@ -11,7 +11,8 @@ engine = Flask(__name__)
 #connect Mongo
 
 Cluster_Pointer = MongoClient(os.environ.get('CONNECTION_URL'))
-
+SESSION = Cluster_Pointer["SESSION"]
+KEYS = SESSION["KEYS"]
 Database = Cluster_Pointer['LMS']
 AUTHOR = Database["AUTHOR"]
 BOOK = Database["BOOK"]
@@ -69,14 +70,20 @@ def log_info():
             response["message"] = "Wrong Email or Password"
         else:
             del flagged_staff["password"]
+            session = helpers.sessionGenerator(10)
+            session_package = {"avatar" : flagged_staff["email"], "key" : session}
             flagged_staff["_id"] = "ADMIN"
             response["status"] = True
-            response["message"] = flagged_staff
+            response["message"] = session_package
+            KEYS.insert_one(session_package)
     else:
         del flagged_user["password"]
+        session = helpers.sessionGenerator(10)
+        session_package = {"avatar" : flagged_user["email"], "key" : session}
         flagged_user["_id"] = "USER"
         response["status"] = True
-        response["message"] = flagged_user
+        response["message"] = session_package
+        KEYS.insert_one(session_package)
     return response
 
 
