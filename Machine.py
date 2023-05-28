@@ -99,6 +99,7 @@ def reg_info():
             response["status"] = False
             response["message"] = "Passwords do not match!"
         else:
+            # count = USER.
             del incoming_data["password2"]
             incoming_data["password"] = helpers.MD5_HexDigest(incoming_data["password"])
             USER.insert_one(incoming_data)
