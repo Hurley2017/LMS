@@ -17,7 +17,7 @@ body {
     padding: 12px;
     width: 80%;
     border-radius: 30px;
-    margin: 40px auto 20px; /* Adjust the margin-top value to move the navbar down */
+    margin: 40px auto 20px;
  }
  
  
@@ -42,7 +42,7 @@ body {
     background: rgb(235, 98, 6);
     color: #fff;
     border: none;
-    border-radius: 20px; /* Make the buttons pill-shaped */
+    border-radius: 20px;
     margin-right: 10px;
     text-decoration: none;
     font-weight: bold;
@@ -93,9 +93,6 @@ body {
    margin-top: 20px;
  }
  
- /* Existing styles */
- 
- 
  .card {
    width: 300px;
    background: #fff;
@@ -103,6 +100,7 @@ body {
    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
    margin: 10px;
  }
+ 
  
  .card-header {
    padding: 10px;
@@ -124,12 +122,9 @@ body {
  
  .card-body p {
    margin: 0;
+   justify-content: center;
    font-size: 14px;
  }
- 
- /* Existing styles */
-
- /* Existing styles */
 
 .card-header {
    display: flex;
@@ -172,7 +167,7 @@ body {
    border: none;
    border-radius: 20px;
    padding: 8px 16px;
-   margin: 0 5px; /* Adjusted margin value */
+   margin: 0 5px;
    cursor: pointer;
  }
  
@@ -188,7 +183,7 @@ body {
  .catalog-books-section {
    margin: 20px auto;
    width: 80%;
-   max-width: 1920px; /* Adjust the max-width as needed */
+   max-width: 1920px;
  }
  
  .catalog-books-section h2 {
@@ -209,7 +204,7 @@ body {
    border-radius: 20px;
    padding: 20px;
    margin: 10px;
-   width: 240px; /* Adjust the width as needed */
+   width: 240px; 
    text-align: center;
  }
  
@@ -233,14 +228,30 @@ body {
    margin-bottom: 5px;
  }
  .borrow-button {
-   padding: 8px 16px;
-   background: orange;
+   padding: 10px 16px;
+   background: rgb(28, 100, 4);
    color: #fff;
    border: none;
    border-radius: 30px;
    cursor: pointer;
+   margin-left: 5%;
+   margin-right: 5%;
  }
  
  .borrow-button:hover {
-   background: orangered;
+   background: rgb(5, 65, 18);
+ }
+ .borrow-button-2 {
+   padding: 10px 16px;
+   background: rgb(64, 58, 235);
+   color: #fff;
+   border: none;
+   border-radius: 30px;
+   cursor: pointer;
+   margin-left: 5%;
+   margin-right: 5%;
+ }
+ 
+ .borrow-button-2:hover {
+   background: rgb(8, 26, 108);
  }
