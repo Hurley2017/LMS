@@ -113,7 +113,7 @@ def reg_info():
 def checkSession():
     response = {"status" : False, "message" : None}
     sessionData = request.json
-    flag = KEYS.find_one({"email":sessionData["email"], "key":sessionData["key"]})
+    flag = KEYS.find_one({"avatar":sessionData["email"], "key":sessionData["key"]})
     if flag == None:
         response["message"] = "Session Invalid"
     else:

@@ -1,7 +1,12 @@
 // Function to send form data to API endpoint
-function setCookie(name, value) {
-  localStorage.setItem(name, value);
-} 
+function setCookie(name, value, days) {
+  const expirationDate = new Date();
+  expirationDate.setDate(expirationDate.getDate() + days);
+  const expires = "expires=" + expirationDate.toUTCString();
+  const serializedValue = JSON.stringify(value);
+  document.cookie = name + "=" + encodeURIComponent(serializedValue) + ";" + expires + ";path=/";
+}
+
 function redirect1()
 {
   window.location = "/admin";
@@ -35,6 +40,7 @@ function sendData(formData) {
       }
       else
       {
+        console.log(data.message.avatar);
         if(data.message.role == "ADMIN")
         {
             document.getElementById("message").innerHTML = "Successfull login... Redirecting to Admin Panel...";
@@ -45,7 +51,8 @@ function sendData(formData) {
         else
         {
             document.getElementById("message").innerHTML = "Successfull login... Redirecting to dashboard...";
-            setCookie(data.message);
+            setCookie("email", data.message.avatar, 7);
+            setCookie("session", data.message.key, 7); 
             setTimeout(redirect2, 2500);
         }
       }
