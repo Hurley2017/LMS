@@ -23,10 +23,10 @@ body {
  .navbar-brand {
    font-size: 20px;
    font-weight: bold;
+   align-content: center;
    color: #fff;
    align-items: center;
-   margin-right: auto;
-   margin-left: 20px;
+   margin-left: 10%;
  }
  
  .navbar-links {
@@ -252,93 +252,3 @@ body {
  .borrow-button-2:hover {
    background: rgb(8, 26, 108);
  }
- 
- .add-book-form {
-   width: 80%;
-   max-width: 400px; /* Adjust the max-width as desired */
-   margin: 0 auto;
-   background: linear-gradient(-135deg, #ff9ef5, #0bf1f5);
-   padding: 20px;
-   border-radius: 10px;
-   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
- }
- 
- .add-book-form h2 {
-   text-align: center;
-   font-size: 24px;
-   margin-bottom: 20px;
-   color: rgb(8, 121, 0);
- }
- 
- .add-book-form label {
-   display: block;
-   margin-bottom: 8px;
-   font-size: 16px;
-   font-weight: bold;
-   color: #333;
- }
- 
- .add-book-form input[type="text"],
- .add-book-form textarea {
-   width: 100%; /* Adjust the width as desired */
-   max-width: 80%;
-   padding: 8px 12px;
-   font-size: 14px;
-   border-radius: 30px;
-   border: 1px solid #ccc;
-   outline: none;
-   margin-bottom: 10px;
- }
- 
- .add-book-form textarea {
-   resize: vertical;
- }
- 
- .add-book-form button[type="submit"] {
-   padding: 10px 16px;
-   background: linear-gradient(-135deg, #7FFF00, #006400);
-   color: #fff;
-   border: none;
-   border-radius: 30px;
-   cursor: pointer;
-   margin-top: 20px;
- }
- 
- .add-book-form button[type="submit"]:hover {
-   background: linear-gradient(-135deg, #5db600, #004d00);
- }
-
- .file-input-container {
-   position: relative;
-   display: inline-block;
- }
- 
- .file-input-container input[type="file"] {
-   position: absolute;
-   left: 0;
-   top: 0;
-   opacity: 0;
- }
- 
- .file-input-container label {
-   display: inline-block;
-   padding: 8px 16px;
-   background-color: #21cf61;
-   color: #fff;
-   border-radius: 4px;
-   cursor: pointer;
- }
- 
- .file-input-container label:hover {
-   background-color: #20cdf0;
- }
- 
- .file-input-container label:active {
-   background-color: #003080;
- }
- 
- 

@@ -12,7 +12,6 @@ document.getElementById('upload-form').addEventListener('submit', function(e) {
         // Process the file contents here
         console.log('File contents:', contents);
       };
-  
       reader.readAsText(file); // Read the file as text
     }
   });
