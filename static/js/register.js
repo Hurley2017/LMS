@@ -1,4 +1,8 @@
 // Function to send form data to API endpoint
+function redirect()
+{
+  window.location = "/login";
+}
 function sendData(formData) {
     fetch('http://127.0.0.1:5000/send_reginfo', {
       method: 'POST',
@@ -18,8 +22,15 @@ function sendData(formData) {
     })
     .then(data => {
       // Handle the API response
-      console.log(data);
-      // Do something with the response data
+      if(data.status == false)
+      {
+        document.getElementById("message").innerHTML = data.message;
+      }
+      else
+      {
+        document.getElementById("message").innerHTML = data.message + " Redirecting to login page...";
+        setTimeout(redirect, 3000);
+      }
     })
     .catch(error => {
       // Handle any errors
