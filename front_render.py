@@ -23,5 +23,13 @@ def dashboard():
 def admin():
     return render_template('admin.html')
 
+@engine.route('/add', methods=['GET'])
+def add():
+    return render_template('add_book.html')
+
+@engine.route('/edit', methods=['GET'])
+def edit():
+    return render_template('edit_book.html')
+
 if __name__ == "__main__":
     engine.run(debug=True)
