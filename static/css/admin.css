@@ -252,3 +252,51 @@ body {
  .borrow-button-2:hover {
    background: rgb(8, 26, 108);
  }
+
+ .big-section {
+  background-color: rgb(255, 255, 255);
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 7vh;
+}
+
+.big-button {
+  background: linear-gradient(to bottom right, rgb(29, 247, 247), rgb(227, 115, 207));
+  border: none;
+  border-radius: 50px; /* Adjust the value to change the pill shape */
+  width: 200px;
+  height: 80px; /* Adjust the value to change the height of the button */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: white;
+  font-size: 20px;
+}
+
+.big-button:hover {
+  opacity: 0.8;
+}
+
+table {
+  border-collapse: collapse;
+  width: 60%;
+  margin-top: 5%;
+  margin-right:auto;
+  margin-left: auto;
+  border: 3px solid rgb(17, 1, 1);
+  justify-content: center;
+}
+
+th, td {
+  padding: 8px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
