@@ -12,11 +12,11 @@
             <div class="navbar-links">
                <a href="#" class="nav-button">Home</a>
             </div>
-            <div class="navbar-brand">Welcome Admin</div>
+            <div id="greet" class="navbar-brand">Welcome Admin</div>
             <div class="navbar-links">
                <a href="#" class="nav-button">Users</a>
                <a href="#" class="nav-button">Books</a>
-               <a href="#" class="nav-button">Logout</a>
+               <a href="#" onclick="logout()" class="nav-button">Logout</a>
             </div>
          </div>
       </div>
@@ -106,5 +106,6 @@
         </div>
       </div>
     </section>
+    <script src="{{url_for('static', filename='./js/logout.js')}}"></script>
    </body>
 </html>
