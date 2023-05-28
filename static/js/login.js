@@ -3,8 +3,10 @@ function setCookie(name, value, days) {
   const expirationDate = new Date();
   expirationDate.setDate(expirationDate.getDate() + days);
   const expires = "expires=" + expirationDate.toUTCString();
-  document.cookie = name + "=" + value + ";" + expires + ";path=/";
+  const serializedValue = JSON.stringify(value);
+  document.cookie = name + "=" + encodeURIComponent(serializedValue) + ";" + expires + ";path=/";
 }
+
 
 function redirect1()
 {

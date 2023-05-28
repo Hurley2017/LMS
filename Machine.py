@@ -109,7 +109,7 @@ def reg_info():
         response["message"] = "Email id is already associated with an account."
     return response
 
-@engine.route('/checkSession', methods=['GET'])
+@engine.route('/checkSession', methods=['POST'])
 def checkSession():
     response = {"status" : False, "message" : None}
     sessionData = request.json
