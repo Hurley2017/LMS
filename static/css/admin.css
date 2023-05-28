@@ -12,9 +12,10 @@ body {
  .navbar {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     background: linear-gradient(-135deg, #46c0df, #003e00);
     padding: 12px;
+    width: 80%;
     border-radius: 30px;
     margin: 40px auto 20px; /* Adjust the margin-top value to move the navbar down */
  }
