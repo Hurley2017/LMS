@@ -1,0 +1,154 @@
+body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Add space between items */
+    background: linear-gradient(-135deg, orange, brown);
+    padding: 10px;
+    width: 80%;
+    margin: 20px auto;
+    border-radius: 30px;
+  }
+  
+  .navbar-brand {
+    font-size: 20px;
+    font-weight: normal;
+    color: #fff;
+  }
+  
+  .navbar-user {
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar-user button {
+    padding: 8px 16px;
+    background: red;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  
+  .navbar-user button:hover {
+    background: #d40000;
+  }
+  
+  .navbar-button.navbar-home {
+    padding: 8px 16px;
+    background: green;
+    color: #fff;
+    border: none;
+    border-radius: 20px; /* Make the home button pill-shaped */
+    cursor: pointer;
+    margin-right: 10px; /* Adjust the margin-right to create space between the home button and the brand */
+  }
+  .navbar-button.navbar-home :hover {
+    background: #052e00;
+  }
+  
+  .search-bar {
+    margin: 20px auto;
+    display: flex;
+    align-items: center;
+    width: 80%;
+    max-width: 400px;
+  }
+  
+  .search-bar input[type="text"] {
+    flex-grow: 1;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+  }
+  
+  .search-bar button[type="submit"] {
+    padding: 8px 16px;
+    background: linear-gradient(-135deg, orange, brown);
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  
+  .search-bar button[type="submit"]:hover {
+    background: linear-gradient(-135deg, #f36e0e, #573c0c);
+  }
+  
+  .book-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  /* CSS for the borrowed books section */
+
+.borrowed-books-section {
+    margin: 20px auto;
+    width: 80%;
+    max-width: 1920px; /* Adjust the max-width as needed */
+  }
+  
+  .borrowed-books-section h2 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: rgb(255, 176, 30);
+  }
+  
+  .borrowed-books {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .book-card {
+    background: linear-gradient(-135deg, orange, brown);
+    border-radius: 20px;
+    padding: 20px;
+    margin: 10px;
+    width: 240px; /* Adjust the width as needed */
+    text-align: center;
+  }
+  
+  .book-card img {
+    width: 150px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .book-card h3 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+  }
+  
+  .book-card p {
+    font-size: 14px;
+    color: #fff;
+    margin-bottom: 5px;
+  }
+  .return-button {
+    padding: 8px 16px;
+    background: green;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+  }
+  
+  .return-button:hover {
+    background: darkgreen;
+  }
+
+  
