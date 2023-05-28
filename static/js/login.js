@@ -1,13 +1,7 @@
 // Function to send form data to API endpoint
-function setCookie(name, value, days) {
-  const expirationDate = new Date();
-  expirationDate.setDate(expirationDate.getDate() + days);
-  const expires = "expires=" + expirationDate.toUTCString();
-  const serializedValue = JSON.stringify(value);
-  document.cookie = name + "=" + encodeURIComponent(serializedValue) + ";" + expires + ";path=/";
+function setCookie(name, value) {
+  localStorage.setItem(name, value);
 }
-
-
 function redirect1()
 {
   window.location = "/admin";
