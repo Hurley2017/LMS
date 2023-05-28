@@ -4,12 +4,11 @@
       <meta charset="utf-8">
       <title>Admin Panel</title>
       <link rel="stylesheet" href="{{url_for('static', filename='./css/admin.css')}}">
-      <script src="{{url_for('static', filename='./js/admin.js')}}"></script>
    </head>
    <body>
       <div class="container">
          <div class="navbar">
-            <div class="navbar-brand">Welcome _______</div>
+            <div class="navbar-brand">Welcome   _______  </div>
             <div class="navbar-links">
                <a href="#" class="nav-button">Home</a>
                <a href="#" class="nav-button">Users</a>
@@ -22,5 +21,53 @@
         <input type="text" placeholder="Search">
         <button class="search-button">Search</button>
      </div>
+
+
+     <br>
+     <br>
+
+     <h2 class="section-heading">Users</h2>
+     <section class="user-section">
+      <div class="card">
+        <div class="card-header">
+          <img src="{{url_for('static', filename='./img/download.png')}}" alt="User 1">
+          <h3>Full Name</h3>
+        </div>
+        <div class="card-body">
+          <p>User ID: 123456</p>
+          <p>Email: user1@example.com</p>
+          <p>Address: 123 Main St, City, Country</p>
+          <div class="section-buttons">
+            <button class="pill-button">Activate</button>
+            <button class="pill-button">Activities</button>
+          </div>
+        </div>
+      </div>
+      <!-- Add more user cards as needed -->
+    </section>
+
+   <br>
+   <br>
+
+   <section class="catalog-books-section">
+      <h2>Catalog</h2>
+      
+      <div class="catalog-books">
+        <div class="catalog-book-card">
+          <img src="{{url_for('static', filename='./img/unnamed.jpg')}}" alt="Book 1">
+          <h3>Book Title 1</h3>
+          <p>Author: Author Name 1</p>
+          <p>Category: Category 1</p>
+          <p>Borrowed Date: 2023-05-29</p>
+          <br>
+          <button class="borrow-button">Edit</button>
+          <button class="borrow-button">Delete</button>
+        </div>
+        
+        <!-- Add more book cards as needed -->
+      </div>
+    </section>
+
+
    </body>
 </html>
