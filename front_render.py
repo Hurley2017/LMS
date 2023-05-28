@@ -19,5 +19,9 @@ def logout():
 def dashboard():
     return render_template('dashboard.html')
 
+@engine.route('/admin', methods=['GET'])
+def admin():
+    return render_template('admin.html')
+
 if __name__ == "__main__":
     engine.run(debug=True)
