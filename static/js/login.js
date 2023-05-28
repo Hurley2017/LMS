@@ -1,7 +1,7 @@
 // Function to send form data to API endpoint
 function setCookie(name, value) {
   localStorage.setItem(name, value);
-}
+} 
 function redirect1()
 {
   window.location = "/admin";
