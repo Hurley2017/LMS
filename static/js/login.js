@@ -6,7 +6,11 @@ function setCookie(session)
     let expires = "expires="+ d.toUTCString();
     document.cookie = session["avatar"] + "=" + session["key"] + ";" + expires + ";path=/";
 }
-function redirect()
+function redirect1()
+{
+  window.location = "/admin";
+}
+function redirect2()
 {
   window.location = "/dashboard";
 }
@@ -35,10 +39,18 @@ function sendData(formData) {
       }
       else
       {
-
-        document.getElementById("message").innerHTML = "Successfull login... Redirecting to dashboard...";
-        setCookie(data.message);
-        setTimeout(redirect, 3000);
+        if(data.message.role == "ADMIN")
+        {
+            document.getElementById("message").innerHTML = "Successfull login... Redirecting to Admin Panel...";
+            setCookie(data.message);
+            setTimeout(redirect1, 2500);
+        }
+        else
+        {
+            document.getElementById("message").innerHTML = "Successfull login... Redirecting to dashboard...";
+            setCookie(data.message);
+            setTimeout(redirect2, 2500);
+        }
       }
     })
     .catch(error => {
