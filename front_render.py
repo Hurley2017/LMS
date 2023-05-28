@@ -84,9 +84,14 @@ def log_info():
 def reg_info():
     response = {"status" : False, "message" : None}
     incoming_data = request.json
-    incoming_data["password"] = helpers.MD5_HexDigest(incoming_data["password"])
-    USER.insert_one(incoming_data)
-    response["status"] = True
-    response["message"] = "Successfully Registered!"
+    if incoming_data["password"] != incoming_data["password2"]:
+        response["status"] = False
+        response["message"] = "Passwords do not match!"
+    else:
+        del incoming_data["password2"]
+        incoming_data["password"] = helpers.MD5_HexDigest(incoming_data["password"])
+        USER.insert_one(incoming_data)
+        response["status"] = True
+        response["message"] = "Successfully Registered!"
     return response
 
