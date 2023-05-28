@@ -109,3 +109,18 @@ def reg_info():
         response["message"] = "Email id is already associated with an account."
     return response
 
+@engine.route('/checkSession', methods=['GET'])
+def checkSession():
+    response = {"status" : False, "message" : None}
+    sessionData = request.json
+    flag = KEYS.find_one({"email":sessionData["email"], "key":sessionData["key"]})
+    if flag == None:
+        response["message"] = "Session Invalid"
+    else:
+        response["status"] = True
+        if flag["role"] == "ADMIN":
+            response["message"] = {"fname": STAFF.find_one({"email" : sessionData["email"]})["fname"], "lname" : STAFF.find_one({"email" : sessionData["email"]})["lname"]}
+        else:
+            response["message"] = {"fname": USER.find_one({"email" : sessionData["email"]})["fname"], "lname" : USER.find_one({"email" : sessionData["email"]})["lname"]}
+    return response
+
