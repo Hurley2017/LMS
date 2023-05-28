@@ -59,9 +59,10 @@ def edit():
 
 @engine.route('/send_loginfo', methods=['POST'])
 def log_info():
-    response = {"status" : False, "message" : None}
+    response = {"status" : False, "message" : {}}
     incoming_data = request.json
     email = incoming_data["email"]
+    print(incoming_data)
     password = helpers.MD5_HexDigest(incoming_data["password"])
     flagged_user = USER.find_one({"email":email, "password":password})
     if flagged_user == None:
@@ -69,18 +70,14 @@ def log_info():
         if flagged_staff == None:
             response["message"] = "Wrong Email or Password"
         else:
-            del flagged_staff["password"]
             session = helpers.sessionGenerator(10)
-            session_package = {"avatar" : flagged_staff["email"], "key" : session}
-            flagged_staff["_id"] = "ADMIN"
+            session_package = {"avatar" : flagged_staff["email"], "key" : session, "role" : "ADMIN"}
             response["status"] = True
             response["message"] = session_package
             KEYS.insert_one(session_package)
     else:
-        del flagged_user["password"]
         session = helpers.sessionGenerator(10)
-        session_package = {"avatar" : flagged_user["email"], "key" : session}
-        flagged_user["_id"] = "USER"
+        session_package = {"avatar" : flagged_user["email"], "key" : session, "role" : "USER"}
         response["status"] = True
         response["message"] = session_package
         KEYS.insert_one(session_package)

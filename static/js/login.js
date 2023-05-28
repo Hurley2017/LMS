@@ -1,4 +1,11 @@
 // Function to send form data to API endpoint
+function setCookie(session)
+{
+    const d = new Date();
+    d.setTime(d.getTime() + (2*24*60*60*1000));
+    let expires = "expires="+ d.toUTCString();
+    document.cookie = session["avatar"] + "=" + session["key"] + ";" + expires + ";path=/";
+}
 function redirect()
 {
   window.location = "/dashboard";
@@ -28,7 +35,8 @@ function sendData(formData) {
       }
       else
       {
-        document.getElementById("message").innerHTML = data.message + " Redirecting to login page...";
+
+        document.getElementById("message").innerHTML = "Successfull login..." + " Redirecting to dashboard...";
         setTimeout(redirect, 3000);
       }
     })
@@ -46,10 +54,6 @@ function sendData(formData) {
     const formData = {
       email: document.getElementById('email').value,
       password: document.getElementById('password').value,
-      password2: document.getElementById('password2').value,
-      fname: document.getElementById('fname').value,
-      lname: document.getElementById('lname').value,
-      address: document.getElementById('address').value
     };
     // Send the data to the API endpoint
     sendData(formData);
