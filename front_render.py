@@ -1,6 +1,26 @@
 from flask import Flask, render_template
+from pymongo import MongoClient
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 engine = Flask(__name__)
+
+#connect Mongo
+
+Cluster_Pointer = MongoClient(os.environ.get('CONNECTION_URL'))
+
+Database = Cluster_Pointer['LMS']
+AUTHOR = Database["AUTHOR"]
+BOOK = Database["BOOK"]
+BOOK_COVER = Database["BOOK_COVER"]
+CATEGORY = Database["CATEGORY"]
+PUBLISHER = Database["PUBLISHER"]
+STAFF = Database["STAFF"]
+USER = Database["USER"]
+
+
 
 #renders
 @engine.route('/', methods=['GET'])
@@ -35,4 +55,6 @@ def edit():
 
 #services
 
-
+@engine.route('/send_loginfo', methods=['POST'])
+def log_info():
+    return "Help"
