@@ -25,11 +25,8 @@ USER = Database["USER"]
 
 
 #renders
-@engine.route('/', methods=['GET'])
-def say_ello():
-    return "Working"
 
-@engine.route('/login', methods=['GET'])
+@engine.route('/', methods=['GET'])
 def login():
     return render_template('log-in.html')
 

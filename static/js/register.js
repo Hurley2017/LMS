@@ -1,7 +1,7 @@
 // Function to send form data to API endpoint
 function redirect()
 {
-  window.location = "/login";
+  window.location = "/";
 }
 function sendData(formData) {
     fetch('/send_reginfo', {

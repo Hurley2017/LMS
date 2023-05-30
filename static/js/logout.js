@@ -5,6 +5,6 @@ function clearCookies(vr) {
   {
     clearCookies("email");
     clearCookies("session");
-    window.location = "/login" 
+    window.location = "/" 
   }
    
