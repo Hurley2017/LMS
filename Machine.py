@@ -124,3 +124,16 @@ def checkSession():
             response["message"] = {"fname": USER.find_one({"email" : sessionData["email"]})["fname"], "lname" : USER.find_one({"email" : sessionData["email"]})["lname"]}
     return response
 
+@engine.route('/search_res', methods=['POST'])
+def search():
+    incoming_data = request.json
+    sample_list = []
+    BOOK_res = BOOK.find({"title" : "/"+incoming_data["content"]+"/i"}, {})
+    AUTHOR_IDs = AUTHOR.find({"author_name" : "/"+incoming_data["content"]+"/i"}, {})
+    for ID in AUTHOR_IDs:
+        temp_Store = BOOK.find({"author_id" : ID["author_id"]})
+        BOOK_res = BOOK_res + temp_Store
+    for data in BOOK_res:
+        sample_list.append(data)
+    print(sample_list)
+    return "fuck off"    
