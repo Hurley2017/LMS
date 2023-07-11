@@ -8,8 +8,7 @@ load_dotenv()
 
 engine = Flask(__name__)
 
-#connect Mongo
-
+#connect MongoDB
 Cluster_Pointer = MongoClient(os.environ.get('CONNECTION_URL'))
 SESSION = Cluster_Pointer["SESSION"]
 KEYS = SESSION["KEYS"]
@@ -121,16 +120,26 @@ def checkSession():
             response["message"] = {"role":"USER", "fname": USER.find_one({"email" : sessionData["email"]})["fname"], "lname" : USER.find_one({"email" : sessionData["email"]})["lname"]}
     return response
 
-@engine.route('/search_res', methods=['POST'])
-def search():
+# @engine.route('/search_res', methods=['POST'])
+# def search():
+#     incoming_data = request.json
+#     sample_list = []
+#     BOOK_res = BOOK.find({"title" : "/"+incoming_data["content"]+"/i"}, {})
+#     AUTHOR_IDs = AUTHOR.find({"author_name" : "/"+incoming_data["content"]+"/i"}, {})
+#     for ID in AUTHOR_IDs:
+#         temp_Store = BOOK.find({"author_id" : ID["author_id"]})
+#         BOOK_res = BOOK_res + temp_Store
+#     for data in BOOK_res:
+#         sample_list.append(data)
+#     print(sample_list)
+#     return "fuck off"    
+
+@engine.route('/add_book', methods=['POST'])
+def add_book():
+    response = {"status" : False, "message" : None}
     incoming_data = request.json
-    sample_list = []
-    BOOK_res = BOOK.find({"title" : "/"+incoming_data["content"]+"/i"}, {})
-    AUTHOR_IDs = AUTHOR.find({"author_name" : "/"+incoming_data["content"]+"/i"}, {})
-    for ID in AUTHOR_IDs:
-        temp_Store = BOOK.find({"author_id" : ID["author_id"]})
-        BOOK_res = BOOK_res + temp_Store
-    for data in BOOK_res:
-        sample_list.append(data)
-    print(sample_list)
-    return "fuck off"    
+    BOOK.insert_one(incoming_data)
+    response["status"] = True
+    response["message"] = "successfully added!"
+    print("Above code is reached!")
+    return response

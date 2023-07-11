@@ -10,46 +10,47 @@
          <div class="title">
             New Book Information
          </div>
-         <form action="#">
+         <form id="addbook" action="#">
             <div class="field">
-               <input type="text" required>
+               <input id="bookid" type="text" required>
                <label>Book ID</label>
             </div>
             <div class="field">
-               <input type="text" required>
+               <input id="title" type="text" required>
                <label>Title</label>
             </div>
             <div class="field">
-               <input type="text" required>
+               <input id="authorid" type="text" required>
                <label>Author ID</label>
             </div>
             <div class="field">
-               <input type="text" required>
+               <input id="edition" type="text" required>
                <label>Edition</label>
             </div>
             <div class="field">
-               <input type="text" required>
+               <input id="categoryid" type="text" required>
                <label>Category ID</label>
             </div>
             <div class="field">
-               <input type="text" required>
+               <input id="publisherid" type="text" required>
                <label>Publisher ID</label>
             </div>
             <div class="field">
-               <input type="text" required>
+               <input id="copies" type="text" required>
                <label>Copies</label>
             </div>
             <div class="field">
-               <input type="text" required>
+               <input id="publicationyear" type="text" required>
                <label>Publication Year</label>
             </div>
-            <div class="field">
-               <input type="submit" value="Submit">
+            <div id="status" class="field">
+               <input class="submit" type="submit" value="Submit">
             </div>
-            <div class="null">
-               <a href="#">Go Back</a>
+            <div class="field">
+               <input type="submit" onclick="redirect1()" value="Go back">
             </div>
          </form>
       </div>
+      <script src="{{url_for('static', filename='./js/addedit.js')}}"></script>
    </body>
 </html>
