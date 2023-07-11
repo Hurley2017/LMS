@@ -42,10 +42,20 @@ function getCookie(name) {
       // Handle the API response
       if(data.status == false)
       {
-        window.location = "/login";
+        window.location = "/";
       }
       else
       {
+        if(data.message.role == "ADMIN")
+        {
+            document.getElementById("message").innerHTML = "Successfull login... Redirecting to Admin Panel...";
+            setTimeout(redirect1, 2500);
+        }
+        else
+        {
+            document.getElementById("message").innerHTML = "Successfull login... Redirecting to dashboard...";
+            setTimeout(redirect2, 2500);
+        }
         document.getElementById("greet").innerHTML = data.message.fname + " " + data.message.lname;
       }
     })
@@ -53,3 +63,11 @@ function getCookie(name) {
       // Handle any errors
       console.error(error);
     });
+function redirect1()
+{
+  window.location = "/admin";
+}
+function redirect2()
+{
+  window.location = "/dashboard";
+}

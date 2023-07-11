@@ -116,9 +116,9 @@ def checkSession():
     else:
         response["status"] = True
         if flag["role"] == "ADMIN":
-            response["message"] = {"fname": STAFF.find_one({"email" : sessionData["email"]})["fname"], "lname" : STAFF.find_one({"email" : sessionData["email"]})["lname"]}
+            response["message"] = {"role":"ADMIN", "fname": STAFF.find_one({"email" : sessionData["email"]})["fname"], "lname" : STAFF.find_one({"email" : sessionData["email"]})["lname"]}
         else:
-            response["message"] = {"fname": USER.find_one({"email" : sessionData["email"]})["fname"], "lname" : USER.find_one({"email" : sessionData["email"]})["lname"]}
+            response["message"] = {"role":"USER", "fname": USER.find_one({"email" : sessionData["email"]})["fname"], "lname" : USER.find_one({"email" : sessionData["email"]})["lname"]}
     return response
 
 @engine.route('/search_res', methods=['POST'])

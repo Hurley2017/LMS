@@ -6,7 +6,6 @@ function setCookie(name, value, days) {
   const serializedValue = JSON.stringify(value);
   document.cookie = name + "=" + encodeURIComponent(serializedValue) + ";" + expires + ";path=/";
 }
-
 function redirect1()
 {
   window.location = "/admin";
