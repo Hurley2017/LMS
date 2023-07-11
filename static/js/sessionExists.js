@@ -21,7 +21,6 @@ function getCookie(name) {
     {
       email : getCookie("email"),
       key : getCookie("session"),
-      role : getCookie("role"),
     }
     fetch('/checkSession', {
       method: 'POST',
@@ -41,29 +40,16 @@ function getCookie(name) {
     })
     .then(data => {
       // Handle the API response
-      if(data.status == false)
-      {
-        window.location = "/";
-      }
-      else
+      if(data.status == true)
       {
         if(data.message.role == "ADMIN")
         {
-          //check if we are in admin page
-          if(window.location.pathname != "/admin")
-          {
-            window.location = "/admin";
-          }
+            setTimeout(redirect1, 2500);
         }
         else
         {
-          //check if we are in dashboard page
-          if(window.location.pathname != "/dashboard")
-          {
-            window.location = "/dashboard";
-          }
+            setTimeout(redirect2, 2500);
         }
-        document.getElementById("greet").innerHTML = data.message.fname + " " + data.message.lname;
       }
     })
     .catch(error => {

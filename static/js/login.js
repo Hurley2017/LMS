@@ -45,13 +45,15 @@ function sendData(formData) {
             document.getElementById("message").innerHTML = "Successfull login... Redirecting to Admin Panel...";
             setCookie("email", data.message.avatar, 7);
             setCookie("session", data.message.key, 7);
+            setCookie("role", data.message.role, 7);
             setTimeout(redirect1, 2500);
         }
         else
         {
             document.getElementById("message").innerHTML = "Successfull login... Redirecting to dashboard...";
             setCookie("email", data.message.avatar, 7);
-            setCookie("session", data.message.key, 7); 
+            setCookie("session", data.message.key, 7);
+            setCookie("role", data.message.role, 7);
             setTimeout(redirect2, 2500);
         }
       }
