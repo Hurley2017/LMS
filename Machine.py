@@ -52,7 +52,6 @@ def edit():
 
 
 #services
-
 @engine.route('/send_loginfo', methods=['POST'])
 def log_info():
     response = {"status" : False, "message" : {}}
@@ -132,8 +131,9 @@ def checkSession():
 #     for data in BOOK_res:
 #         sample_list.append(data)
 #     print(sample_list)
-#     return "fuck off"    
+#     return " off"    
 
+#just testing
 @engine.route('/add_book', methods=['POST'])
 def add_book():
     response = {"status" : False, "message" : None}

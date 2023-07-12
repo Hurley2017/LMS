@@ -44,11 +44,11 @@ function getCookie(name) {
       {
         if(data.message.role == "ADMIN")
         {
-            setTimeout(redirect1, 2500);
+            redirect1();
         }
         else
         {
-            setTimeout(redirect2, 2500);
+            redirect2();
         }
       }
     })
