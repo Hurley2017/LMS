@@ -20,6 +20,7 @@ CATEGORY = Database["CATEGORY"]
 PUBLISHER = Database["PUBLISHER"]
 STAFF = Database["STAFF"]
 USER = Database["USER"]
+BORROW_RETURN = Database["BORROW/RETURN"]
 
 
 
@@ -142,4 +143,22 @@ def add_book():
     response["status"] = True
     response["message"] = "successfully added!"
     print("Above code is reached!")
+    return response
+
+
+
+#sending book information
+@engine.route('/getBook', methods=['GET'])
+def getBook():
+    response = {"status" : False, "message" : None}
+    book = BOOK.find({})
+    if book == None:
+        response["status"] = False
+        response["message"] = "Book not found!"
+    else:
+        response["status"] = True
+        # response["message"] = book
+        response["message"] = {
+            
+        }
     return response
